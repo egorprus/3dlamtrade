@@ -1,0 +1,41 @@
+.input-file {
+    display: none;
+    &-label {
+        display: flex;
+        background: #FBFBFB;
+        border: 1px dashed #E4E5E7;
+        border-radius: 7px;
+        overflow: hidden;
+        cursor: pointer;
+        &__empty {
+            display: flex;
+        }
+        &__text {
+            padding: 18px 25px 16px 20px;
+            font-size: 15px;
+            line-height: 18px;
+            color: rgba(153, 153, 153, .7);
+        }
+        &__upload {
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex: 1;
+            color: #5795FD;
+        }
+    }
+    &-value {
+        display: none;
+    }
+}
+.upload-file {
+    background-color: #5795FD;
+    padding: 18px;
+}
+.delete-file {
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+}

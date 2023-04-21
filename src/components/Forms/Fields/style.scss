@@ -1,0 +1,46 @@
+.fields {
+    display: flex;
+    flex-direction: column;
+    &-row {
+        display: flex;
+        gap: 0 40px;
+        .field {
+            flex: 1;
+        }
+    }
+    &-columns {
+        display: flex;
+    }
+    &__column {
+        flex: 1;
+    }
+    &-group {
+        max-width: 334px;
+        display: flex;
+    }
+}
+.field {
+    display: flex;
+    flex-direction: column;
+    max-width: 334px;
+    &__label {
+        font-size: 14px;
+        line-height: 17px;
+        color: rgba(27, 27, 27, .6);
+        & + .field__input {
+            margin-top: 12px;
+        }
+    }
+    &__input {
+        padding: 17px 20px;
+        border: 1px solid #E4E5E7;;
+        border-radius: 7px;
+        font-size: 15px;
+        line-height: 18px;
+        color: rgba(153, 153, 153, .7);
+        &-wrapper {
+            margin-top: 12px;
+            position: relative;
+        }
+    }
+}

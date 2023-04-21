@@ -1,0 +1,24 @@
+.btn {
+    font-size: 15px;
+    line-height: 18px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    &-default {
+        color: rgba(27, 27, 27, .35);
+        background: none;
+        &:hover {
+            color: rgb(27, 27, 27);
+        }
+    }
+    &-save {
+        padding: 18px 52px;
+        background-color: #0063FF;
+        color: rgba(255, 255, 255, .87);
+        border-radius: 7px;
+        &:hover {
+            color: rgb(255, 255, 255);
+            box-shadow: 0 10px 10px rgba(0,0,0,0.22);
+        }
+    }
+}

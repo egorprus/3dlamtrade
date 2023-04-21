@@ -1,0 +1,27 @@
+.custom-select {
+    [class*="-control"] {
+        background: #FBFBFB;
+        border: 1px solid #E4E5E7;
+        border-radius: 7px;
+    }
+    [class*="-ValueContainer"] {
+        padding: 17px 20px;
+    }
+    [class*="-Input"] {
+        padding: 0;
+        margin: 0;
+        font-size: 15px;
+        line-height: 18px;
+    }
+    [class*="-placeholder"] {
+        margin: 0;
+        font-size: 15px;
+        line-height: 18px;
+    }
+    [class*="-indicatorSeparator"] {
+        display: none;
+    }
+    [class*="-menu"] {
+        margin: 0;
+    }
+}

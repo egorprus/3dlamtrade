@@ -1,0 +1,30 @@
+.field__radio {
+    &-wrapper {
+        &.active {
+            .field__radio-label {
+                color: #5795FD;
+                border-color: #5795FD;
+            }
+        }
+    }
+    &-input {
+        display: none;
+    }
+    &-label {
+        display: inline-block;
+        border: 1px solid #E4E5E7;
+        border-radius: 7px;
+        padding: 17px 18px;
+        font-size: 15px;
+        line-height: 18px;
+        color: rgba(153, 153, 153, .7);
+        cursor: pointer;
+    }
+    &-img {
+        margin-right: 16px;
+    }
+}
+.group-for-radiobutton {
+    gap: 0 10px;
+    margin-top: 12px;
+}

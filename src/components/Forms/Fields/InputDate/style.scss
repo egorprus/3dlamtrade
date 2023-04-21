@@ -1,0 +1,12 @@
+input[type=date]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+}
+.input-data-icon {
+    position: absolute;
+    top: 50%;
+    right: 18px;
+    transform: translateY(-50%);
+}
+.field__input {
+    color: #1B1B1B;
+}
