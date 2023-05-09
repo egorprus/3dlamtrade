@@ -3,18 +3,21 @@
     &-label {
         display: flex;
         background: #FBFBFB;
-        border: 1px dashed #E4E5E7;
         border-radius: 7px;
         overflow: hidden;
         cursor: pointer;
         &__empty {
             display: flex;
+            flex: 1;
         }
         &__text {
-            padding: 18px 25px 16px 20px;
+            width: 100%;
+            padding: 18px 18px 16px 20px;
             font-size: 15px;
             line-height: 18px;
             color: rgba(153, 153, 153, .7);
+            border: 1px dashed #E4E5E7;
+            border-right: none;
         }
         &__upload {
             padding: 15px 20px;
@@ -23,6 +26,7 @@
             justify-content: space-between;
             flex: 1;
             color: #5795FD;
+            border: 1px dashed #E4E5E7;
         }
     }
     &-value {
@@ -32,6 +36,8 @@
 .upload-file {
     background-color: #5795FD;
     padding: 18px;
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
 }
 .delete-file {
     border: none;

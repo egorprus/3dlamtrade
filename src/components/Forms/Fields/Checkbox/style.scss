@@ -1,5 +1,6 @@
 .checkbox {
     flex-direction: row;
+    align-items: center;
     &-input {
         border: 1px solid #E4E5E7;
         border-radius: 4px;
@@ -7,6 +8,7 @@
         height: 18px;
     }
     .field__label {
+        margin-left: 8px;
         color: rgba(153, 153, 153, .7);
         cursor: pointer;
     }

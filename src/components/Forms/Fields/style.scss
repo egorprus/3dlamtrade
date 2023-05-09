@@ -12,17 +12,20 @@
         display: flex;
     }
     &__column {
+        display: flex;
+        flex-direction: column;
         flex: 1;
+        gap: 0 20px;
     }
     &-group {
-        max-width: 334px;
         display: flex;
+        justify-content: space-between;
+        flex: 1;
     }
 }
 .field {
     display: flex;
     flex-direction: column;
-    max-width: 334px;
     &__label {
         font-size: 14px;
         line-height: 17px;

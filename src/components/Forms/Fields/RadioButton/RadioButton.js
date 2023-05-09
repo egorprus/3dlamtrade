@@ -1,19 +1,17 @@
 import React from 'react';
 import { InputRadioButton } from './InputRadioButton';
 import '../style.scss';
-import { Field } from 'react-final-form'
 
-export const RadioButton = (props) => {
-    console.log(props)
+export const RadioButton = ({values, label, require, currentValue, name, register}) => {
     return (
         <div className="field">
             <label className="field__label" >
-                {props.label}
+                {label}
                 {require && '*'}
             </label>
             <div className="fields-group group-for-radiobutton">
-                {props.values.map((value, index) => (
-                    <InputRadioButton value={value} active={props.activeValue === value} input={props.input} index={index} key={index} />
+                {values.map((value, index) => (
+                    <InputRadioButton value={value} active={currentValue === value} name={name} register={register} index={index} key={index} />
                 ))}
             </div>
         </div>

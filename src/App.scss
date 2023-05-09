@@ -3,3 +3,24 @@
     min-width: 100vh;
     min-height: 100vh;
 }
+.flex-1 {
+    flex: 1;
+}
+.flex-2 {
+    flex: 2;
+}
+.gap-row-30 {
+    &.fields__row {
+        gap: 0 30px;
+    }
+}
+.self-align {
+    align-self: flex-start;
+    gap: 0 30px;
+}
+.field__input {
+    width: 100%;
+}
+.width-147 {
+    max-width: 147px;
+}

@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import './App.scss';
 import {
   BrowserRouter as Router,
@@ -15,20 +14,10 @@ import { ResidentialAddressForm } from './components/Forms/FormTypes/Residential
 import { SocialMediaForm } from './components/Forms/FormTypes/SocialMediaForm';
 
 function App() {
-  const [activePage, setActivePage] = useState();
-
-  useEffect(() => {
-
-  }, []);
-
-  const changePage = (page) => {
-    setActivePage(page);
-  };
-
   return (
     <div className="App">
       <Router>
-        <Sidebar changePage={changePage} />
+        <Sidebar />
         <Routes>
           <Route path='/general' element={<MainForm children={<GeneralForm />} />} />
           <Route path='/ownership' element={<MainForm children={<OwnershipForm />} />} />

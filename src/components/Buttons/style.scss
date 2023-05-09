@@ -11,6 +11,13 @@
             color: rgb(27, 27, 27);
         }
     }
+    &-disabled {
+        text-decoration: none;
+        cursor: not-allowed;
+        &:hover {
+            color: rgba(27, 27, 27, .35);;
+        }
+    }
     &-save {
         padding: 18px 52px;
         background-color: #0063FF;
@@ -20,5 +27,16 @@
             color: rgb(255, 255, 255);
             box-shadow: 0 10px 10px rgba(0,0,0,0.22);
         }
+    }
+    &-add {
+        background: none;
+        color: #3E85FD;
+        align-items: flex-start;
+        display: flex;
+        font-weight: 400;
+        padding: 0;
+    }
+    &-img {
+        margin-right: 10px;
     }
 }

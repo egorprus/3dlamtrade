@@ -3,10 +3,8 @@
     flex-direction: column;
     padding: 110px 132px 110px 100px;
     flex: 1;
-    &__footer {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+    &__header {
+        margin-bottom: 40px;
     }
 }
 .form {
@@ -35,4 +33,26 @@
         font-weight: 300;
         color: rgba(0, 0, 0, .5);
     }
+    &__footer {
+        margin-top: 80px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+.fields__row {
+    display: flex;
+    justify-content: space-between;
+    gap: 0 40px;
+    & > .field {
+        flex: 1;
+    }
+    & .flex-2 {
+        flex: 2;
+    }
+}
+.fields-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 40px 0;
 }

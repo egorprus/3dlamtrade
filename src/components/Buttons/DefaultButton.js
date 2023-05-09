@@ -1,10 +1,11 @@
 import React from 'react';
 import './style.scss'
+import { Link } from 'react-router-dom';
 
-export const DefaultButton = ({children}) => {
+export const DefaultButton = ({children, path, classes}) => {
     return (
-        <button className="btn btn-default" type="button">
+        <Link className={`btn ${classes}`} to={path}>
             {children}
-        </button>
+        </Link>
     );
 };

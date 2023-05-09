@@ -1,49 +1,83 @@
 import React from 'react';
-import { Form, Field } from 'react-final-form'
+import { useForm } from "react-hook-form";
 import { CustomSelect } from '../Fields/CustomSelect/CustomSelect';
 import { InputDate } from '../Fields/InputDate/InputDate';
 import { InputText } from '../Fields/InputText/InputText';
 import { RadioButton } from '../Fields/RadioButton/RadioButton';
+import { minLength, onlyLetters, required } from '../validate/validate';
+import { FormFooter } from './FormFooter';
 
-export const GeneralForm = (props) => {
+export const GeneralForm = () => {
+    const { register, handleSubmit, watch, control, formState: { errors } } = useForm();
+    const onSubmit = data => console.log(data);
+
     return (
-        <Form
-            onSubmit={(values) => console.log(values)}
-            initialValues={{lastName: 'Prus'}}
-            render={ (props) => (
-                <form className="form">
-                    <div className="form__header">
-                        <h3 className="form__title">
-                            general
-                        </h3>
-                        <p className="form__text">
-                            Введите свои персональные данные.
-                        </p>
+        <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="form__header">
+                <h3 className="form__title">
+                    general
+                </h3>
+                <p className="form__text">
+                    Введите свои персональные данные.
+                </p>
+            </div>
+            
+            <div className="fields-rows">
+                <div className="fields__row">
+                    <InputText
+                        {...FIELDS.lastName}
+                        register={register(FIELDS.lastName.name, {validate: {...FIELDS.lastName.validate}})}
+                        errors={errors.lastName}
+                    />
+                    <InputText
+                        {...FIELDS.firstName}
+                        register={register(FIELDS.firstName.name, {validate: {...FIELDS.firstName.validate}})}
+                        errors={errors.firstName}
+                    />
+                </div>
+                <div className="fields__row">                            
+                    <InputText
+                        {...FIELDS.middleName}
+                        register={register(FIELDS.middleName.name, {validate: {...FIELDS.middleName.validate}})}
+                        errors={errors.middleName}
+                    />
+                    <CustomSelect
+                        {...FIELDS.mainCity}
+                        register={register(FIELDS.mainCity.name)}
+                        errors={errors.mainCity}
+                        control={control}
+                    />
+                </div>
+                <div className='fields__row'>
+                    <CustomSelect
+                        {...FIELDS.citizenship}
+                        register={register(FIELDS.citizenship.name)}
+                        errors={errors.citizenship}
+                        control={control}
+                    />
+                    <div className="fields-group">
+                        <RadioButton
+                            {...FIELDS.sex}
+                            currentValue={watch(FIELDS.sex.name)}
+                            register={register(FIELDS.sex.name)}
+                        />
+                        <InputDate
+                            {...FIELDS.dob}
+                            register={register(FIELDS.dob.name, {valueAsDate: true})}
+                            control={control}
+                        />
                     </div>
-                    <div className="form__fields">
-                        <div className="fields-columns">
-                            <div className="fields__column">
-                                {/* <Field {...FIELDS.lastName} /> */}
-                                {/* <Field {...FIELDS.middleName} />
-                                <Field {...FIELDS.citizenship} /> */}
-                            </div>
-                            <div className="fields__column">
-                                {/* <Field {...FIELDS.firstName} /> */}
-                                <Field {...FIELDS.mainCity} />
-                                <div className="fields-group">
-                                    <Field {...FIELDS.sex} activeValue={props.values['sex']} />
-                                    <Field {...FIELDS.dob} />
-                                </div>
-                            </div>
-                        </div>
-                        <div className="fields-row">
-                            {/* <Field {...FIELDS.placeOfBirth} /> */}
-                        </div>
-                    </div>
-                    <pre>{JSON.stringify(props.values, 0, 2)}</pre>
-                </form>
-            )}
-        />
+                </div>
+                <div className='fields__row'>
+                    <InputText
+                        {...FIELDS.placeOfBirth}
+                        register={register(FIELDS.placeOfBirth.name, {validate: {...FIELDS.placeOfBirth.validate}})}
+                        errors={errors.placeOfBirth}
+                    />
+                </div>
+            </div>
+            <FormFooter pathname={window.location.pathname} />
+        </form>
     );
 };
 
@@ -52,28 +86,36 @@ const FIELDS = {
         name: 'lastName',
         label: 'Фамилия',
         placeholder: 'Васильев',
-        require: true,
-        component: InputText
+        validate: {
+            min: minLength(3),
+            required: required
+        },
+        inputProcessing: onlyLetters
     },
     firstName: {
         name: 'firstName',
         label: 'Имя',
         placeholder: 'Иван',
-        require: true,
-        component: InputText
+        validate: {
+            min: minLength(3),
+            required: required
+        }
     },
     middleName: {
         name: 'middleName',
         label: 'Отчество',
         placeholder: 'Сергеевич',
-        require: true,
-        component: InputText
+        validate: {
+            min: minLength(3),
+            required: required
+        },
     },
     mainCity: {
         name: 'mainCity',
         label: 'Основной город',
-        require: true,
-        component: CustomSelect,
+        validate: {
+            required: required
+        },
         options: [
             {
                 value: 'stPetersburg',
@@ -104,14 +146,36 @@ const FIELDS = {
     citizenship: {
         name: 'citizenship',
         label: 'Гражданство',
-        require: true,
-        component: InputText
+        component: InputText,
+        validate: {
+            required: required
+        },
+        options: [
+            {
+                value: 'rus',
+                label: 'Российское'
+            },
+            {
+                value: 'bel',
+                label: 'Белорусское'
+            },
+            {
+                value: 'usa',
+                label: 'Американское'
+            },
+            {
+                value: 'ger',
+                label: 'Немецкое'
+            }
+        ]
     },
     sex: {
         name: 'sex',
         label: 'Пол',
-        require: true,
         component: RadioButton,
+        validate: {
+            required: required
+        },
         values: [
             'М',
             'Ж'
@@ -120,11 +184,18 @@ const FIELDS = {
     dob: {
         name: 'dob',
         label: 'Дата рождения',
-        component: InputDate
+        component: InputDate,
+        validate: {
+            required: required
+        },
     },
     placeOfBirth: {
         name: 'placeOfBirth',
         label: 'Место рождения (как указано в паспорте)',
-        component: InputText
+        component: InputText,
+        validate: {
+            min: minLength(3),
+            required: required
+        },
     }
 }

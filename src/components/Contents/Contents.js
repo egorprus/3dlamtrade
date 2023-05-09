@@ -1,14 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { pages } from '../../utils/formList';
 import { ContentsItem } from './ContentsItem';
+import { getCurrentFormIndex } from '../../utils/getCurrentFormIndex';
 
-export const Contents = ({changePage}) => {
-
+export const Contents = () => {
   return (
     <ul className="contents-list">
       {pages.map((page, index) =>
-        <ContentsItem changePage={changePage} page={page} key={index} index={index + 1} />
+        <ContentsItem page={page} key={index} index={index + 1} isActive={index === getCurrentFormIndex()} />
       )}
     </ul>
   )
